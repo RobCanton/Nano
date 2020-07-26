@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,12 +14,13 @@
 		B060AF8424CDD5B50005E445 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B060AF8224CDD5B50005E445 /* Main.storyboard */; };
 		B060AF8624CDD5B60005E445 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B060AF8524CDD5B60005E445 /* Assets.xcassets */; };
 		B060AF8924CDD5B60005E445 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B060AF8724CDD5B60005E445 /* LaunchScreen.storyboard */; };
+		B060AF9124CDD86D0005E445 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B060AF9024CDD86D0005E445 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		908477FFF2BA97878D924763 /* Pods-Nano.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nano.debug.xcconfig"; path = "Target Support Files/Pods-Nano/Pods-Nano.debug.xcconfig"; sourceTree = "<group>"; };
 		95B9FAD94A6B96524F45219B /* Pods_Nano.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nano.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B060AF7924CDD5B50005E445 /* Nano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nano.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B060AF7924CDD5B50005E445 /* Nano Finance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nano Finance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B060AF7C24CDD5B50005E445 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B060AF7E24CDD5B50005E445 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B060AF8024CDD5B50005E445 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,6 +28,8 @@
 		B060AF8524CDD5B60005E445 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B060AF8824CDD5B60005E445 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B060AF8A24CDD5B60005E445 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B060AF9024CDD86D0005E445 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B060AF9224CDD9ED0005E445 /* Nano.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nano.entitlements; sourceTree = "<group>"; };
 		DF4407DBDC3ACD8E41040A70 /* Pods-Nano.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nano.release.xcconfig"; path = "Target Support Files/Pods-Nano/Pods-Nano.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -48,7 +51,6 @@
 				908477FFF2BA97878D924763 /* Pods-Nano.debug.xcconfig */,
 				DF4407DBDC3ACD8E41040A70 /* Pods-Nano.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -73,7 +75,7 @@
 		B060AF7A24CDD5B50005E445 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B060AF7924CDD5B50005E445 /* Nano.app */,
+				B060AF7924CDD5B50005E445 /* Nano Finance.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +83,7 @@
 		B060AF7B24CDD5B50005E445 /* Nano */ = {
 			isa = PBXGroup;
 			children = (
+				B060AF9224CDD9ED0005E445 /* Nano.entitlements */,
 				B060AF7C24CDD5B50005E445 /* AppDelegate.swift */,
 				B060AF7E24CDD5B50005E445 /* SceneDelegate.swift */,
 				B060AF8024CDD5B50005E445 /* ViewController.swift */,
@@ -88,6 +91,7 @@
 				B060AF8524CDD5B60005E445 /* Assets.xcassets */,
 				B060AF8724CDD5B60005E445 /* LaunchScreen.storyboard */,
 				B060AF8A24CDD5B60005E445 /* Info.plist */,
+				B060AF9024CDD86D0005E445 /* GoogleService-Info.plist */,
 			);
 			path = Nano;
 			sourceTree = "<group>";
@@ -111,7 +115,7 @@
 			);
 			name = Nano;
 			productName = Nano;
-			productReference = B060AF7924CDD5B50005E445 /* Nano.app */;
+			productReference = B060AF7924CDD5B50005E445 /* Nano Finance.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -153,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B060AF8924CDD5B60005E445 /* LaunchScreen.storyboard in Resources */,
+				B060AF9124CDD86D0005E445 /* GoogleService-Info.plist in Resources */,
 				B060AF8624CDD5B60005E445 /* Assets.xcassets in Resources */,
 				B060AF8424CDD5B50005E445 /* Main.storyboard in Resources */,
 			);
@@ -354,6 +359,7 @@
 			baseConfigurationReference = 908477FFF2BA97878D924763 /* Pods-Nano.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Nano/Nano.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6BES3VUFCX;
 				INFOPLIST_FILE = Nano/Info.plist;
@@ -362,7 +368,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertcanton.Nano;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Nano Finance";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -373,6 +379,7 @@
 			baseConfigurationReference = DF4407DBDC3ACD8E41040A70 /* Pods-Nano.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Nano/Nano.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6BES3VUFCX;
 				INFOPLIST_FILE = Nano/Info.plist;
@@ -381,7 +388,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertcanton.Nano;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Nano Finance";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
