@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D97F5C6838424F9312B2A1E /* Pods_Nano.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9FAD94A6B96524F45219B /* Pods_Nano.framework */; };
 		B060AF7D24CDD5B50005E445 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B060AF7C24CDD5B50005E445 /* AppDelegate.swift */; };
 		B060AF7F24CDD5B50005E445 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B060AF7E24CDD5B50005E445 /* SceneDelegate.swift */; };
 		B060AF8124CDD5B50005E445 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B060AF8024CDD5B50005E445 /* ViewController.swift */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		908477FFF2BA97878D924763 /* Pods-Nano.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nano.debug.xcconfig"; path = "Target Support Files/Pods-Nano/Pods-Nano.debug.xcconfig"; sourceTree = "<group>"; };
+		95B9FAD94A6B96524F45219B /* Pods_Nano.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nano.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B060AF7924CDD5B50005E445 /* Nano.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nano.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B060AF7C24CDD5B50005E445 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B060AF7E24CDD5B50005E445 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		B060AF8524CDD5B60005E445 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B060AF8824CDD5B60005E445 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B060AF8A24CDD5B60005E445 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF4407DBDC3ACD8E41040A70 /* Pods-Nano.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nano.release.xcconfig"; path = "Target Support Files/Pods-Nano/Pods-Nano.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D97F5C6838424F9312B2A1E /* Pods_Nano.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		151328B5D2DC82F461C9E155 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				908477FFF2BA97878D924763 /* Pods-Nano.debug.xcconfig */,
+				DF4407DBDC3ACD8E41040A70 /* Pods-Nano.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		5959E48CB34F2507ED525D0B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95B9FAD94A6B96524F45219B /* Pods_Nano.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B060AF7024CDD5B50005E445 = {
 			isa = PBXGroup;
 			children = (
 				B060AF7B24CDD5B50005E445 /* Nano */,
 				B060AF7A24CDD5B50005E445 /* Products */,
+				151328B5D2DC82F461C9E155 /* Pods */,
+				5959E48CB34F2507ED525D0B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B060AF8D24CDD5B60005E445 /* Build configuration list for PBXNativeTarget "Nano" */;
 			buildPhases = (
+				C58D05ED052D8CFCA243262B /* [CP] Check Pods Manifest.lock */,
 				B060AF7524CDD5B50005E445 /* Sources */,
 				B060AF7624CDD5B50005E445 /* Frameworks */,
 				B060AF7724CDD5B50005E445 /* Resources */,
+				D7D1226DB68566DB5D6BEFA5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C58D05ED052D8CFCA243262B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Nano-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7D1226DB68566DB5D6BEFA5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nano/Pods-Nano-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Nano/Pods-Nano-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Nano/Pods-Nano-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B060AF7524CDD5B50005E445 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		B060AF8E24CDD5B60005E445 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 908477FFF2BA97878D924763 /* Pods-Nano.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +370,7 @@
 		};
 		B060AF8F24CDD5B60005E445 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF4407DBDC3ACD8E41040A70 /* Pods-Nano.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
