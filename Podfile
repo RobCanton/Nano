@@ -14,4 +14,13 @@ target 'Nano' do
   pod 'Firebase/Storage'
   pod 'Firebase/Functions'
   pod 'Firebase/Messaging'
+  pod 'GoogleSignIn'
+  pod 'Socket.IO-Client-Swift', '~> 15.2.0'
+  pod 'SwiftMessages'
+  pod 'Texture'
+  pod 'Differ'
+  pod 'lottie-ios'
+  pod 'Parchment'
+  pod 'MKGradientView'
+  pod 'SwiftTickerView'
 end
