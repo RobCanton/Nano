@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 import MKGradientView
-import SwiftTickerView
 
 class IndexHeaderCell:UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -16,6 +15,7 @@ class IndexHeaderCell:UITableViewCell, UICollectionViewDelegate, UICollectionVie
     var collectionView:UICollectionView!
     
     var isScrolling = false
+    var speed:CGFloat = 0.25
     
     struct IndexPair {
         let symbol:String
@@ -46,21 +46,21 @@ class IndexHeaderCell:UITableViewCell, UICollectionViewDelegate, UICollectionVie
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         
-        let width = UIScreen.main.bounds.width / 2.5
-        layout.itemSize = CGSize(width: width, height: 64)
+        let width = UIScreen.main.bounds.width / 3
+        layout.itemSize = CGSize(width: width, height: 44)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         contentView.addSubview(collectionView)
         collectionView.constraintToSuperview()
-        collectionView.constraintHeight(to: 64)
+        collectionView.constraintHeight(to: 44)
         collectionView.register(IndexCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.reloadData()
         
-        let timer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(nextTick), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer, forMode: .common)
+//        let timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(nextTick), userInfo: nil, repeats: true)
+//        //RunLoop.current.add(timer, forMode: .common)
         
         let divider = UIView()
         contentView.addSubview(divider)
@@ -80,7 +80,7 @@ class IndexHeaderCell:UITableViewCell, UICollectionViewDelegate, UICollectionVie
     @objc func nextTick() {
         if isScrolling { return }
         let offsetX = collectionView.contentOffset.x
-        let nextOffsetX = offsetX + 0.25
+        let nextOffsetX = offsetX + 1
         collectionView.contentOffset = CGPoint(x: nextOffsetX, y: 0)
     }
     
@@ -96,7 +96,7 @@ class IndexHeaderCell:UITableViewCell, UICollectionViewDelegate, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! IndexCell
         let pair = pairs[indexPath.row]
         cell.symbolLabel.text = pair.symbol
-        cell.changeLabel.text = "-\(pair.change)%"
+        cell.changeLabel.text = "-\(pair.change)"
         return cell
     }
     
@@ -135,23 +135,18 @@ class IndexCell:UICollectionViewCell {
     
     private func setup() {
         symbolLabel = UILabel()
-        symbolLabel.font = UIFont.systemFont(ofSize: 14.0, weight: .medium)
+        symbolLabel.font = UIFont.systemFont(ofSize: 14.0, weight: .regular)
         contentView.addSubview(symbolLabel)
-        symbolLabel.constraintToSuperview(12, 12, nil, nil, ignoreSafeArea: true)
+        symbolLabel.constraintToSuperview(12, 12, 12, nil, ignoreSafeArea: true)
         //stackView.addArrangedSubview(symbolLabel)
-        
-        priceLabel = UILabel()
-        priceLabel.font = UIFont.monospacedSystemFont(ofSize: 14.0, weight: .medium)
-        contentView.addSubview(priceLabel)
-        priceLabel.constraintToSuperview(12, nil, nil, 12, ignoreSafeArea: true)
-        priceLabel.text = "265.83"
         
         changeLabel = UILabel()
         changeLabel.font = UIFont.monospacedSystemFont(ofSize: 14.0, weight: .medium)//systemFont(ofSize: 14.0, weight: .medium)
         changeLabel.textColor = Theme.current.negative
         contentView.addSubview(changeLabel)
         changeLabel.constraintToSuperview(nil, 12, 12, 12, ignoreSafeArea: true)
-        changeLabel.textAlignment = .center
+        changeLabel.textAlignment = .right
+        //changeLabel.leadingAnchor.constraint(equalTo: symbolLabel.trailingAnchor, constant: 8.0).isActive = true
         
         let divider = UIView()
         contentView.addSubview(divider)
@@ -161,32 +156,5 @@ class IndexCell:UICollectionViewCell {
         
         
         //stackView.addArrangedSubview(changeLabel)
-    }
-}
-
-
-extension IndexHeaderCell: SwiftTickerDelegate {
-    func tickerView(willResume ticker: SwiftTickerView) {}
-    func tickerView(willStart ticker: SwiftTickerView) {}
-    func tickerView(willStop ticker: SwiftTickerView) {}
-    func tickerView(didPress view: UIView, content: Any?) {}
-}
-
-extension IndexHeaderCell: SwiftTickerViewProvider {
-    func tickerView(_ tickerView: SwiftTickerView, prepareSeparator separator: UIView) {
-        if let separator = separator as? UILabel {
-            separator.textColor = .label
-        }
-    }
-
-    func tickerView(_ tickerView: SwiftTickerView, viewFor: Any) -> (UIView, reuseIdentifier: String?) {
-        if let text = viewFor as? String,
-            let label = tickerView.dequeReusableNodeView(for: "label") as? UILabel {
-            label.text = text
-            label.sizeToFit()
-            label.textColor = .white
-            return (label, reuseIdentifier: "label")
-        }
-        return (UIView(), reuseIdentifier: nil)
     }
 }

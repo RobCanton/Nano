@@ -31,7 +31,7 @@ class InteractiveModalPresentationAnimator: NSObject, UIViewControllerAnimatedTr
     }
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.45
+        return 0.35
     }
     
     private func animatePresentation(transitionContext: UIViewControllerContextTransitioning) {

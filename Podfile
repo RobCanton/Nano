@@ -23,4 +23,5 @@ target 'Nano' do
   pod 'Parchment'
   pod 'MKGradientView'
   pod 'SwiftTickerView'
+  pod 'BetterSegmentedControl', '~> 1.3'
 end

@@ -47,12 +47,16 @@ class CommentCellNode:ASCellNode {
         dateFormatter.dateFormat = "h:mm: a"
         
         let timeStr = dateFormatter.string(from: comment.dateCreated)
-        
+
         let bodyStr = NSMutableAttributedString()
+        
+        
         bodyStr.append(NSAttributedString(string: timeStr, attributes: [
+            
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11.0, weight: .regular),
             NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel,
             NSAttributedString.Key.baselineOffset: 0.5
+            
         ]))
         
         bodyStr.append(NSAttributedString(string: "   \(comment.profile.username)   ", attributes: [
@@ -70,11 +74,11 @@ class CommentCellNode:ASCellNode {
             NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel
         ]))
         
-        bodyStr.append(NSAttributedString(string: "  Bullish  ", attributes: [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13.0, weight: .regular),
-            NSAttributedString.Key.foregroundColor: Theme.current.positive,
-            NSAttributedString.Key.backgroundColor: Theme.current.positive.withAlphaComponent(0.2)
-        ]))
+//        bodyStr.append(NSAttributedString(string: "  Bullish  ", attributes: [
+//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13.0, weight: .regular),
+//            NSAttributedString.Key.foregroundColor: Theme.current.positive,
+//            NSAttributedString.Key.backgroundColor: Theme.current.positive.withAlphaComponent(0.2)
+//        ]))
 
         
         textNode.attributedText = bodyStr

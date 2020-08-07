@@ -22,7 +22,7 @@ extension InteractiveDetailViewController: OverlayDelegate {
             overlayVC = DetailCommentsPageVC(item: item)
             break
         case .alert:
-            overlayVC = AlertOverlayViewController(item: item,
+            overlayVC = EditAlertOverlayViewController(item: item,
                                                         alert: nil)
             //shiftUp = 30
             break

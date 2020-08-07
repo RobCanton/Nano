@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4D97F5C6838424F9312B2A1E /* Pods_Nano.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B9FAD94A6B96524F45219B /* Pods_Nano.framework */; };
+		B0336F3424D24ECF00846C0A /* AlertResetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0336F3324D24ECF00846C0A /* AlertResetCell.swift */; };
+		B0336F3624D251F600846C0A /* AlertDividerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0336F3524D251F600846C0A /* AlertDividerCell.swift */; };
+		B0336F3824D3239100846C0A /* EditAlertOverlayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0336F3724D3239100846C0A /* EditAlertOverlayVC.swift */; };
 		B036884D24CF44E80039A44C /* RavenAPI+MarketData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B036884624CF44E80039A44C /* RavenAPI+MarketData.swift */; };
 		B036884E24CF44E80039A44C /* RavenAPI+News.swift in Sources */ = {isa = PBXBuildFile; fileRef = B036884724CF44E80039A44C /* RavenAPI+News.swift */; };
 		B036884F24CF44E80039A44C /* RavenAPI+Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = B036884824CF44E80039A44C /* RavenAPI+Search.swift */; };
@@ -180,12 +183,16 @@
 		B060AFCE24CE057F0005E445 /* DeviceMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B060AFC424CE057F0005E445 /* DeviceMetrics.swift */; };
 		B060AFCF24CE057F0005E445 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B060AFC524CE057F0005E445 /* UIView+Extensions.swift */; };
 		B0B4466824CE063F003748D3 /* ScreenAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B4466724CE063F003748D3 /* ScreenAction.swift */; };
+		B0B7361E24D8F60800E0B021 /* AlertConditionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B7361D24D8F60800E0B021 /* AlertConditionsCell.swift */; };
 		B0C4F33A24CF8E47008A5DD1 /* AlertCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C4F33924CF8E46008A5DD1 /* AlertCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		908477FFF2BA97878D924763 /* Pods-Nano.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nano.debug.xcconfig"; path = "Target Support Files/Pods-Nano/Pods-Nano.debug.xcconfig"; sourceTree = "<group>"; };
 		95B9FAD94A6B96524F45219B /* Pods_Nano.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nano.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0336F3324D24ECF00846C0A /* AlertResetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertResetCell.swift; sourceTree = "<group>"; };
+		B0336F3524D251F600846C0A /* AlertDividerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDividerCell.swift; sourceTree = "<group>"; };
+		B0336F3724D3239100846C0A /* EditAlertOverlayVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlertOverlayVC.swift; sourceTree = "<group>"; };
 		B036884624CF44E80039A44C /* RavenAPI+MarketData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RavenAPI+MarketData.swift"; sourceTree = "<group>"; };
 		B036884724CF44E80039A44C /* RavenAPI+News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RavenAPI+News.swift"; sourceTree = "<group>"; };
 		B036884824CF44E80039A44C /* RavenAPI+Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RavenAPI+Search.swift"; sourceTree = "<group>"; };
@@ -361,6 +368,7 @@
 		B060AFC424CE057F0005E445 /* DeviceMetrics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceMetrics.swift; sourceTree = "<group>"; };
 		B060AFC524CE057F0005E445 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		B0B4466724CE063F003748D3 /* ScreenAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenAction.swift; sourceTree = "<group>"; };
+		B0B7361D24D8F60800E0B021 /* AlertConditionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertConditionsCell.swift; sourceTree = "<group>"; };
 		B0C4F33924CF8E46008A5DD1 /* AlertCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCell.swift; sourceTree = "<group>"; };
 		DF4407DBDC3ACD8E41040A70 /* Pods-Nano.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nano.release.xcconfig"; path = "Target Support Files/Pods-Nano/Pods-Nano.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -456,6 +464,7 @@
 				B03688BD24CF46B20039A44C /* HomeVC+CollectionViewExtension.swift */,
 				B03688B624CF46B10039A44C /* HomeVC+ContextMenu.swift */,
 				B03688B424CF46B10039A44C /* IndexHeaderCell.swift */,
+				B03688C024CF46B20039A44C /* TrendingHeaderCell.swift */,
 				B03688BA24CF46B10039A44C /* LiveChartMiniView.swift */,
 				B03688B724CF46B10039A44C /* LiveChartView.swift */,
 				B03688BB24CF46B20039A44C /* MarketStatusView.swift */,
@@ -465,7 +474,6 @@
 				B03688BC24CF46B20039A44C /* TickerProvider.swift */,
 				B03688B824CF46B10039A44C /* TickerSearchResultsController.swift */,
 				B03688BE24CF46B20039A44C /* TitleCell.swift */,
-				B03688C024CF46B20039A44C /* TrendingHeaderCell.swift */,
 				B03688A824CF469A0039A44C /* PremiumHeader */,
 			);
 			path = Home;
@@ -610,11 +618,11 @@
 		B03688D324CF46D60039A44C /* Overlays */ = {
 			isa = PBXGroup;
 			children = (
+				B03688DF24CF46D60039A44C /* OverlayViewController.swift */,
 				B03688D424CF46D60039A44C /* Note */,
 				B03688D624CF46D60039A44C /* Comments */,
 				B03688DB24CF46D60039A44C /* Chat */,
 				B03688DD24CF46D60039A44C /* Alert */,
-				B03688DF24CF46D60039A44C /* OverlayViewController.swift */,
 				B03688E024CF46D60039A44C /* Components */,
 			);
 			path = Overlays;
@@ -651,6 +659,10 @@
 			isa = PBXGroup;
 			children = (
 				B03688DE24CF46D60039A44C /* AlertOverlayViewController.swift */,
+				B0336F3724D3239100846C0A /* EditAlertOverlayVC.swift */,
+				B0336F3324D24ECF00846C0A /* AlertResetCell.swift */,
+				B0336F3524D251F600846C0A /* AlertDividerCell.swift */,
+				B0B7361D24D8F60800E0B021 /* AlertConditionsCell.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -840,11 +852,11 @@
 				B060AF9424CE04210005E445 /* Alert.swift */,
 				B060AF9B24CE04220005E445 /* AlertNotification.swift */,
 				B060AF9624CE04210005E445 /* Comment.swift */,
+				B060AF9A24CE04210005E445 /* MarketItem.swift */,
 				B060AF9824CE04210005E445 /* Crypto.swift */,
 				B060AFA024CE04220005E445 /* Crypto+Computed.swift */,
 				B060AF9524CE04210005E445 /* Forex.swift */,
 				B060AF9724CE04210005E445 /* Forex+Computed.swift */,
-				B060AF9A24CE04210005E445 /* MarketItem.swift */,
 				B060AFA124CE04220005E445 /* MarketStatus.swift */,
 				B060AF9C24CE04220005E445 /* News.swift */,
 				B060AFA424CE04230005E445 /* Sign.swift */,
@@ -1099,6 +1111,7 @@
 				B03688AE24CF46A60039A44C /* ProPreviewPricesView.swift in Sources */,
 				B036885E24CF45D00039A44C /* StockRow.swift in Sources */,
 				B0B4466824CE063F003748D3 /* ScreenAction.swift in Sources */,
+				B0B7361E24D8F60800E0B021 /* AlertConditionsCell.swift in Sources */,
 				B036890E24CF46F60039A44C /* DetailPagerVC.swift in Sources */,
 				B036891224CF46F60039A44C /* DetailAlertsPageVC.swift in Sources */,
 				B036892F24CF48170039A44C /* MarketDataVC.swift in Sources */,
@@ -1106,6 +1119,7 @@
 				B036894A24CF48530039A44C /* InteractiveModalPresentationController.swift in Sources */,
 				B060AFAA24CE04230005E445 /* Aggregate.swift in Sources */,
 				B036884D24CF44E80039A44C /* RavenAPI+MarketData.swift in Sources */,
+				B0336F3424D24ECF00846C0A /* AlertResetCell.swift in Sources */,
 				B0C4F33A24CF8E47008A5DD1 /* AlertCell.swift in Sources */,
 				B036889024CF46570039A44C /* AlertsStackCell.swift in Sources */,
 				B060AFB024CE04230005E445 /* TradeCondition.swift in Sources */,
@@ -1138,6 +1152,7 @@
 				B036891024CF46F60039A44C /* DetailActionsCell.swift in Sources */,
 				B036893B24CF48300039A44C /* UserSettingsViewController.swift in Sources */,
 				B036893D24CF48300039A44C /* UserProfileSettingsCell.swift in Sources */,
+				B0336F3624D251F600846C0A /* AlertDividerCell.swift in Sources */,
 				B03688AD24CF46A60039A44C /* UpgradeHeaderCell.swift in Sources */,
 				B060AFA824CE04230005E445 /* Forex+Computed.swift in Sources */,
 				B060AFB324CE04230005E445 /* Stock+Computed.swift in Sources */,
@@ -1192,6 +1207,7 @@
 				B036884F24CF44E80039A44C /* RavenAPI+Search.swift in Sources */,
 				B036897F24CF4CAF0039A44C /* NotificationManager.swift in Sources */,
 				B036886D24CF46470039A44C /* LoadingVC.swift in Sources */,
+				B0336F3824D3239100846C0A /* EditAlertOverlayVC.swift in Sources */,
 				B036891724CF46F60039A44C /* DetailQuoteViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum MarketType:String {
     case stocks = "stocks"
@@ -19,6 +20,12 @@ protocol MarketItem:class {
     var name:String { get }
     
     var price:Double { get }
+    var change:Double? { get }
+    var changeStr:String? { get }
+    var changePercent:Double? { get }
+    var changePercentStr:String? { get }
+    var changeColor:UIColor { get }
+    
     
     var stats:[StatValue] { get }
     
@@ -27,6 +34,8 @@ protocol MarketItem:class {
     var displayLastQuote:MarketQuote? { get }
     
     func copy(from item:MarketItem)
+    
+    
 }
 
 struct Item:Codable {

@@ -226,15 +226,17 @@ extension RootTabBarController: StockBarDelegate {
     }
     
     func stockBarDidLongPress(item: MarketItem) {
-        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        sheet.addAction(UIAlertAction(title: "Unpin", style: .destructive, handler: { _ in
-            self.stockBarDismiss()
-        }))
-        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        self.present(sheet, animated: true, completion: {
-            self.stockBar.resetGestures()
-        })
+        self.stockBarDismiss()
+        self.stockBar.resetGestures()
+//        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//        sheet.addAction(UIAlertAction(title: "Unpin", style: .destructive, handler: { _ in
+//            self.stockBarDismiss()
+//        }))
+//        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+//
+//        self.present(sheet, animated: true, completion: {
+//            self.stockBar.resetGestures()
+//        })
     }
 }
 

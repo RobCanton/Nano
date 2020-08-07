@@ -21,6 +21,9 @@ class AlertTextFieldCell:UITableViewCell, UITextFieldDelegate {
     var indexPath:IndexPath?
     weak var delegate:AlertTextFieldCellDelegate?
     
+    var minusButton:UIButton!
+    var plusButton:UIButton!
+    
     override func becomeFirstResponder() -> Bool {
         return textField.becomeFirstResponder()
     }
@@ -36,7 +39,7 @@ class AlertTextFieldCell:UITableViewCell, UITextFieldDelegate {
     }
     
     private func setup() {
-        //self.selectionStyle = .none
+        self.selectionStyle = .none
         self.backgroundColor = .systemBackground
         label = UILabel()
 //        label.font = UIFont.systemFont(ofSize: 17)//.regularFont(ofSize: 17.0)
@@ -48,16 +51,44 @@ class AlertTextFieldCell:UITableViewCell, UITextFieldDelegate {
 //        label
         //label.widthAnchor.constraint(equalToConstant: 72.0).isActive = true
         
+        minusButton = UIButton(type: .system)
+        contentView.addSubview(minusButton)
+        minusButton.setTitle("-", for: .normal)
+        minusButton.constraintToSuperview(16, 16, 12, nil, ignoreSafeArea: true)
+        minusButton.constraintWidth(to: 64)
+        minusButton.constraintHeight(to: 32)
+        minusButton.backgroundColor = UIColor.systemFill
+        minusButton.setTitleColor(.label, for: .normal)
+        minusButton.layer.cornerRadius = 8.0
+        minusButton.layer.cornerCurve = .continuous
+        minusButton.clipsToBounds = true
+        
+        plusButton = UIButton(type: .system)
+        contentView.addSubview(plusButton)
+        plusButton.setTitle("+", for: .normal)
+        plusButton.constraintToSuperview(16, nil, 12, 16, ignoreSafeArea: true)
+        plusButton.constraintWidth(to: 64)
+        plusButton.constraintHeight(to: 32)
+        plusButton.backgroundColor = UIColor.systemFill
+        plusButton.setTitleColor(.label, for: .normal)
+        plusButton.layer.cornerRadius = 8.0
+        plusButton.layer.cornerCurve = .continuous
+        plusButton.clipsToBounds = true
+        
+        
         textField = UITextField()
         contentView.addSubview(textField)
-        textField.constraintToSuperview(12, 12, 12, 16, ignoreSafeArea: true)
+        textField.constraintToSuperview(16, nil, 12, nil, ignoreSafeArea: true)
         textField.textColor = UIColor.label
-        textField.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        textField.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         textField.textAlignment = .center
+        
+        textField.leadingAnchor.constraint(equalTo: minusButton.trailingAnchor, constant: 12.0).isActive = true
+        textField.trailingAnchor.constraint(equalTo: plusButton.leadingAnchor, constant: -12.0).isActive = true
         
         
         //textField.leadingAnchor.constraint(equalTo: label.trailingAnchor, constant: 8.0).isActive = true
-        textField.isUserInteractionEnabled = false
+        //textField.isUserInteractionEnabled = false
         textField.delegate = self
        
         label.setContentHuggingPriority(.defaultLow, for: .horizontal)

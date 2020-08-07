@@ -74,7 +74,12 @@ class ProPreviewPricesView:UIView {
         chartContainer.addSubview(liveChartView)
         liveChartView.constraintToSuperview()
         
-        item = MarketManager.shared.items["AAPL"]
+        
+        if MarketManager.shared.marketStatus == .open {
+            item = MarketManager.shared.items["AAPL"]
+        } else {
+            item = MarketManager.shared.items["X:BTCUSD"]
+        }
         if item != nil {
             NotificationCenter.addObserver(self, selector: #selector(updateTradeDisplay), type: .stockTradeUpdated(item!.symbol))
         }

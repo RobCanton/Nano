@@ -163,7 +163,7 @@ class HomeViewController:UIViewController, UITableViewDataSource, UITableViewDel
             return showHeader ? 1 : 0
         }
         if section == 1 {
-            return 1
+            return 2
         }
         return watchlistItems.count
     }
@@ -185,6 +185,9 @@ class HomeViewController:UIViewController, UITableViewDataSource, UITableViewDel
                 let cell = tableView.dequeueReusableCell(withIdentifier: "trendingCell", for: indexPath) as! TrendingHeaderCell
                 cell.configure()
                 return cell
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "trendingCell", for: indexPath) as! TrendingHeaderCell
+//                cell.configure()
+//                return cell
             default:
                 break
             }
@@ -227,10 +230,13 @@ class HomeViewController:UIViewController, UITableViewDataSource, UITableViewDel
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            NotificationCenter.removeObserver(self, type: .stocksUpdated)
             let stock = watchlistItems[indexPath.row]
             MarketManager.shared.unsubscribe(from: stock.symbol)
             watchlistItems = MarketManager.shared.watchlistItems
             tableView.deleteRows(at: [indexPath], with: .fade)
+            NotificationCenter.addObserver(self, selector: #selector(stocksUpdated), type: .stocksUpdated)
+            
         }
     }
 }

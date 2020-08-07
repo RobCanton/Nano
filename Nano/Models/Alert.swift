@@ -39,17 +39,24 @@ enum AlertType:Int16 {
 enum PriceCondition:Int {
     case isOver = 1
     case isUnder = 2
+    case risesBy = 3
+    case dropsBy = 4
     
     var stringValue:String {
         switch self {
         case .isOver:
-            return "Is Over"
+            return "is over"
         case .isUnder:
-            return "Is Under"
+            return "is under"
+        case .risesBy:
+            return "rises by"
+        case .dropsBy:
+            return "drops by"
         }
+        
     }
     
-    static let all = [.isOver, isUnder]
+    static let all = [isOver, isUnder, risesBy, dropsBy]
 }
 
 

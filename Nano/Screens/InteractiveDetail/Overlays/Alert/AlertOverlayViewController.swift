@@ -48,7 +48,7 @@ class AlertOverlayViewController:OverlayViewController {
         
         //navBar.titleLabel.text = editingMode ? "Edit Alert" : "New Alert"
         
-        tableView = UITableView(frame: view.bounds, style: .grouped)
+        tableView = UITableView(frame: view.bounds, style: .plain)
         //tableView.backgroundColor = UIColor(hex: "171719")
         contentView.addSubview(tableView)
         tableView.constraintToSuperview(0, 0, nil, 0, ignoreSafeArea: false)
@@ -59,11 +59,14 @@ class AlertOverlayViewController:OverlayViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.register(SegmentedControlCell.self, forCellReuseIdentifier: "segmentedCell")
         tableView.register(AlertTextFieldCell.self, forCellReuseIdentifier: "textCell")
+        tableView.register(AlertResetCell.self, forCellReuseIdentifier: "resetCell")
         tableView.register(AlertSwitchCell.self, forCellReuseIdentifier: "switchCell")
         tableView.register(DeleteCell.self, forCellReuseIdentifier: "deleteCell")
-        tableView.register(ResetCell.self, forCellReuseIdentifier: "resetCell")
+        tableView.register(AlertDividerCell.self, forCellReuseIdentifier: "dividerCell")
+        //tableView.register(ResetCell.self, forCellReuseIdentifier: "resetCell")
         tableView.register(ActionCell.self, forCellReuseIdentifier: "actionCell")
         tableView.keyboardDismissMode = .onDrag
+        tableView.separatorStyle = .none
         
         tableView.separatorColor = UIColor.separator.withAlphaComponent(0.25)
         tableView.delegate = self
@@ -105,10 +108,10 @@ class AlertOverlayViewController:OverlayViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let textFieldCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? AlertTextFieldCell {
-            textFieldCell.textField.isUserInteractionEnabled = true
-            textFieldCell.textField.becomeFirstResponder()
-        }
+//        if let textFieldCell = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as? AlertTextFieldCell {
+//            textFieldCell.textField.isUserInteractionEnabled = true
+//            textFieldCell.textField.becomeFirstResponder()
+//        }
     }
     
     @objc func handleSave() {
@@ -153,41 +156,17 @@ extension AlertOverlayViewController:UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        switch section {
        case 0:
-            return 3
+            return 4
        case 1:
-            return 3
+            return 1
        case 2:
-        return 1
+            return 1
        case 3:
             return 0
        case 4:
             return editingMode ? 1 : 0
        default:
             return 0
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return nil
-        case 1:
-            return "Actions"
-        case 2:
-            return nil
-        default:
-            return nil
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        switch section {
-        case 1:
-            return "In-app notifications will always be sent."
-        case 2:
-            return "Determines how long before this alert resets and can be triggered again."
-        default:
-            return nil
         }
     }
     
@@ -198,6 +177,7 @@ extension AlertOverlayViewController:UITableViewDelegate, UITableViewDataSource 
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "segmentedCell", for: indexPath) as! SegmentedControlCell
                 
+
                 cell.segmentedControl.removeAllSegments()
                 
                 var selectedIndex = 0
@@ -217,7 +197,6 @@ extension AlertOverlayViewController:UITableViewDelegate, UITableViewDataSource 
             case 1:
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "segmentedCell", for: indexPath) as! SegmentedControlCell
-                    
                 cell.segmentedControl.removeAllSegments()
                     
                 var selectedIndex = 0
@@ -239,13 +218,13 @@ extension AlertOverlayViewController:UITableViewDelegate, UITableViewDataSource 
                 
                 switch alert.type {
                 case .price:
-                    cell.label.text = "Price"
+                    //cell.label.text = "Price"
                     if let value = alert.value {
                         cell.textField.text = "\(value)"
                     } else {
                         cell.textField.text = nil
                     }
-                    cell.textField.placeholder = "Price"//"\(stock.trades.last?.price ?? 0.00)"
+                    cell.textField.placeholder = "\(item.price)"
                     cell.indexPath = indexPath
                     cell.delegate = self
                     break
@@ -255,34 +234,18 @@ extension AlertOverlayViewController:UITableViewDelegate, UITableViewDataSource 
                 
                 return cell
             default:
-                break
+                let cell = tableView.dequeueReusableCell(withIdentifier: "dividerCell", for: indexPath) as! AlertDividerCell
+                return cell
             }
-            break
         case 1:
-            switch indexPath.row {
-            case 0:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! AlertSwitchCell
-                cell.textLabel?.text = "Send Push Notification"
-                cell.switchView.setOn(true, animated: false)
-                return cell
-            case 1:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! AlertSwitchCell
-                cell.textLabel?.text = "Send Email"
-                cell.detailTextLabel?.text = "robshanecanton@gmail, replicodechannel@gmail.com"
-                return cell
-            case 2:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! AlertSwitchCell
-                cell.textLabel?.text = "Send Text Message"
-                return cell
-            default:
-                break
-            }
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "resetCell", for: indexPath) as! AlertResetCell
+            return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "resetCell", for: indexPath)
-            let resetDelay = ResetDelay(rawValue: alert.reset)!
-            cell.textLabel?.text = "Reset"
-            cell.detailTextLabel?.text = resetDelay.name
-            cell.detailTextLabel?.textColor = UIColor.secondaryLabel
+            let cell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! AlertSwitchCell
+            cell.textLabel?.text = "Send to followers"
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 15.0)
+            cell.textLabel?.textColor = .secondaryLabel
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "actionCell", for: indexPath) as! ActionCell
@@ -301,25 +264,22 @@ extension AlertOverlayViewController:UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let textCell = tableView.cellForRow(at: indexPath) as? AlertTextFieldCell
-        textCell?.textField.isUserInteractionEnabled = true
-        textCell?.textField.becomeFirstResponder()
-        
-        switch indexPath.section {
-        case 2:
-            let vc = ResetSelectViewController(selectedOption: alert.reset)
-            vc.delegate = self
-            self.navigationController?.pushViewController(vc, animated: true)
-            break
-        case 3:
-            handleSave()
-            break
-        case 4:
-            break
-        default:
-            break
-        }
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        let textCell = tableView.cellForRow(at: indexPath) as? AlertTextFieldCell
+//        textCell?.textField.isUserInteractionEnabled = true
+//        textCell?.textField.becomeFirstResponder()
+//
+//        switch indexPath.section {
+//        case 2:
+//            break
+//        case 3:
+//            handleSave()
+//            break
+//        case 4:
+//            break
+//        default:
+//            break
+//        }
         
     }
 }
@@ -333,7 +293,7 @@ extension AlertOverlayViewController: SegmentedControlCellDelegate {
                 IndexPath(row: 1, section: 0),
                 IndexPath(row: 2, section: 0)
             ]
-            //tableView.reloadRows(at: reloadRows, with: .automatic)
+            tableView.reloadRows(at: reloadRows, with: .automatic)
             break
         case 1:
             switch alert.type {

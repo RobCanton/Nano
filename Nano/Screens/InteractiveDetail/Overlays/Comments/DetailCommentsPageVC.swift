@@ -56,7 +56,7 @@ class DetailCommentsPageVC:OverlayViewController {
         tableView.tableFooterView = UIView()
         tableView.tableHeaderView = UIView()
         tableView.separatorStyle = .none
-        tableView.keyboardDismissMode = .onDrag
+        //tableView.keyboardDismissMode = .onDrag
         //tableView.separatorInset = .zero
         tableView.showsVerticalScrollIndicator = false
         

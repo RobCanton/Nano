@@ -175,9 +175,9 @@ class InteractiveDetailViewController:UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        shouldSpeak = true
-        speak(text: "\(item.name)")
-        speak(text: "\(item.price)")
+//        shouldSpeak = true
+//        speak(text: "\(item.name)")
+//        speak(text: "\(item.price)")
         //loop()
         if let root = self.presentingViewController as? RootTabBarController {
             print("haha")

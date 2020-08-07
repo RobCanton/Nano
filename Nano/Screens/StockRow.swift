@@ -122,7 +122,7 @@ class StockRow:UIView {
     @objc private func updateDisplay() {
         //guard let stock = self.stock else { return }
         guard let item = self.item else { return }
-        symbolLabel.text = item.symbol
+        symbolLabel.text = item.socketSymbol
         nameLabel.text = item.name
         
         updateTradeDisplay()

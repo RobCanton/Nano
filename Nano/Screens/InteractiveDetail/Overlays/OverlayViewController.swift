@@ -25,7 +25,7 @@ class OverlayViewController:UIViewController {
     var contentView:UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.barTintColor = UIColor.secondarySystemGroupedBackground
+        self.navigationController?.navigationBar.barTintColor = UIColor.systemBackground
         self.navigationController?.navigationBar.isTranslucent = false
 //        self.navigationController?.view.layer.cornerRadius = 12
 //        self.navigationController?.view.clipsToBounds = true

@@ -52,7 +52,12 @@ class ProPreviewBidAskView:UIView {
         quoteView.trackView.leftBar.backgroundColor = .white
         quoteView.bidSizeLabel.textColor = .white
         
-        item = MarketManager.shared.items["AAPL"]
+        
+        if MarketManager.shared.marketStatus == .open {
+            item = MarketManager.shared.items["AAPL"]
+        } else {
+            item = MarketManager.shared.items["X:BTCUSD"]
+        }
         
         if item != nil {
             quoteView.configure(item: item!)

@@ -56,7 +56,7 @@ class DetailActionsCell: UITableViewCell {
         stackView.constraintToSuperview(10, 0, 10, 0, ignoreSafeArea: true)
         
         watchButton = DetailActionButton()
-        watchButton.image = UIImage(systemName: "star")
+        watchButton.image = UIImage(named: "bookmark")
         watchButton.title = "Watch"
         watchButton.addTarget(target: self, action: #selector(handleButton), for: .touchUpInside)
         watchButton.iconButton.tag = 0
@@ -94,10 +94,10 @@ class DetailActionsCell: UITableViewCell {
 
     func configure(item:MarketItem) {
         if MarketManager.shared.lists.watchlist.contains(item.symbol) {
-            watchButton.image = UIImage(named: "checkmark")
+            watchButton.image = UIImage(named: "bookmark_filled")
             watchButton.title = "Watching"
         } else {
-            watchButton.image = UIImage(named: "add")
+            watchButton.image = UIImage(named: "bookmark")
             watchButton.title = "Watch"
         }
     }
