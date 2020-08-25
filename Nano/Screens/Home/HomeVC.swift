@@ -64,6 +64,7 @@ class HomeViewController:UIViewController, UITableViewDataSource, UITableViewDel
         
         self.extendedLayoutIncludesOpaqueBars = true
         
+        tableView.register(MonoHeaderCell.self, forCellReuseIdentifier: "monoCell")
         tableView.register(UpgradeHeaderCell.self, forCellReuseIdentifier: "upgradeCell")
         tableView.register(IndexHeaderCell.self, forCellReuseIdentifier: "indexCell")
         tableView.register(TrendingHeaderCell.self, forCellReuseIdentifier: "trendingCell")
@@ -163,7 +164,7 @@ class HomeViewController:UIViewController, UITableViewDataSource, UITableViewDel
             return showHeader ? 1 : 0
         }
         if section == 1 {
-            return 2
+            return 0
         }
         return watchlistItems.count
     }
@@ -175,6 +176,8 @@ class HomeViewController:UIViewController, UITableViewDataSource, UITableViewDel
             //cell.titleLabel.text = "Trending"
             cell.closeButton.addTarget(self, action: #selector(handleCloseHeader), for: .touchUpInside)
             return cell
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "monoCell", for: indexPath) as! MonoHeaderCell
+//            return cell
         case 1:
             switch indexPath.row {
             case 0:

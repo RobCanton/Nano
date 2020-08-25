@@ -25,7 +25,7 @@ class Stock:Codable, MarketItem {
     
     func addTrade(_ trade:Trade) {
         self.trades.append(trade)
-        if trades.count >= 500 {
+        if trades.count >= 1000 {
             trades.remove(at: 0)
         }
         

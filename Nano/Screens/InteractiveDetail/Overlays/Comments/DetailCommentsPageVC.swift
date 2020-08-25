@@ -37,7 +37,7 @@ class DetailCommentsPageVC:OverlayViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Chat Room", style: .plain, target: nil, action: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Comments", style: .plain, target: nil, action: nil)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(handleDismiss))
         
         navigationController?.navigationBar.tintColor = UIColor.label
@@ -55,12 +55,13 @@ class DetailCommentsPageVC:OverlayViewController {
         tableView.bottomAnchor.constraint(equalTo: commentBar.topAnchor).isActive = true
         tableView.tableFooterView = UIView()
         tableView.tableHeaderView = UIView()
-        tableView.separatorStyle = .none
+        //tableView.separatorStyle = .none
+        tableView.separatorInset = .zero
         //tableView.keyboardDismissMode = .onDrag
         //tableView.separatorInset = .zero
         tableView.showsVerticalScrollIndicator = false
         
-        tableNode.inverted = true
+        tableNode.inverted = false
         tableNode.delegate = self
         tableNode.dataSource = self
         tableNode.reloadData()
@@ -206,7 +207,7 @@ extension DetailCommentsPageVC: ASTableDelegate, ASTableDataSource {
     }
 
     func tableNode(_ tableNode: ASTableNode, nodeForRowAt indexPath: IndexPath) -> ASCellNode {
-        let node = CommentCellNode()
+        let node = FullCommentCellNode()
         node.setComment(comments[indexPath.row])
         return node
     }

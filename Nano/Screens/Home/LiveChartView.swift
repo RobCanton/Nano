@@ -82,7 +82,7 @@ class LiveChartView:UIView {
             UIColor(hex: "FF3860").set()
         }
         
-        aPath.lineWidth = 1
+        aPath.lineWidth = 2
         aPath.stroke()
     }
     

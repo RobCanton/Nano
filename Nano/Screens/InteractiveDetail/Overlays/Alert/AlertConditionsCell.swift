@@ -38,6 +38,9 @@ class AlertConditionsCell: UITableViewCell {
     
     private func setup() {
         self.selectionStyle = .none
+        
+        self.backgroundColor = UIColor.systemBackground
+        
         stackView = UIStackView()
         contentView.addSubview(stackView)
         stackView.constraintToSuperview(12, 12, 12, 12, ignoreSafeArea: true)
@@ -47,9 +50,9 @@ class AlertConditionsCell: UITableViewCell {
         let row = UIStackView()
         row.axis = .horizontal
         row.spacing = 8.0
-        stackView.addArrangedSubview(row)
+        //stackView.addArrangedSubview(row)
         
-        row.constraintHeight(to: 44)
+        row.constraintHeight(to: 40)
         row.distribution = .fillEqually
         
         let buttons = [
@@ -73,14 +76,14 @@ class AlertConditionsCell: UITableViewCell {
             row.addArrangedSubview(button)
         }
         
-        addDivider()
+        //addDivider()
         
         let conditionsRow = UIStackView()
         conditionsRow.axis = .horizontal
         conditionsRow.spacing = 8.0
         stackView.addArrangedSubview(conditionsRow)
         
-        conditionsRow.constraintHeight(to: 44)
+        conditionsRow.constraintHeight(to: 40)
         conditionsRow.distribution = .fillEqually
         
         let conditions = [
@@ -139,7 +142,7 @@ class AlertConditionsCell: UITableViewCell {
         textField.textColor = UIColor.label
         textField.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         textField.textAlignment = .center
-        textField.placeholder = "77.62"
+        textField.text = "77.62"
 
 
          textField.keyboardType = .decimalPad
@@ -185,7 +188,8 @@ class SelectorButton:UIButton {
     }
     
     private func setup() {
-        
+        //setTitleColor(.label, for: .normal)
+        //setTitleColor(.darkGray, for: .selected)
     }
     
     override var isSelected: Bool {

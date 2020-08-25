@@ -40,7 +40,7 @@ class StockBar:UIView {
         self.addSubview(blurView)
         blurView.constraintToSuperview()
         blurView.isHidden = true
-//        /self.backgroundColor = 
+        self.backgroundColor = UIColor(hex: "171717")
         
         stockRow = StockRow()
         self.addSubview(stockRow)

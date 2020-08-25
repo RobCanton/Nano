@@ -14,10 +14,7 @@ class FullCommentCellNode:ASCellNode {
     var usernameNode = ASTextNode()
     var textNode = ASTextNode()
     var timeText = ASTextNode()
-    
-    var upVoteButton = ASButtonNode()
-    var votesText = ASTextNode()
-    var downVoteButton = ASButtonNode()
+
     
     
     struct Constants {
@@ -35,30 +32,6 @@ class FullCommentCellNode:ASCellNode {
         avatarNode.layer.cornerRadius = Constants.avatarWidth/2
         avatarNode.clipsToBounds = true
         
-       
-        let imageConfig = UIImage.SymbolConfiguration(weight: .light)
-        
-        let upVoteImage = UIImage(systemName: "heart", withConfiguration: imageConfig)
-        upVoteButton.setImage(upVoteImage, for: .normal)
-        upVoteButton.imageNode.imageModificationBlock = { image in
-            return image.mask(withColor: .secondaryLabel)
-        }
-        upVoteButton.setAttributedTitle(NSAttributedString(string: "2", attributes: [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .regular),
-            NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel
-        ]), for: .normal)
-        upVoteButton.laysOutHorizontally = false
-        
-        let downVoteImage = UIImage(systemName: "chevron.down", withConfiguration: imageConfig)
-        downVoteButton.setImage(downVoteImage, for: .normal)
-        downVoteButton.imageNode.imageModificationBlock = { image in
-            return image.mask(withColor: .secondaryLabel)
-        }
-        
-        votesText.attributedText = NSAttributedString(string: "12.6k", attributes: [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .regular),
-            NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel
-        ])
         
         timeText.attributedText = NSAttributedString(string: "6h", attributes: [
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .light),
@@ -77,13 +50,14 @@ class FullCommentCellNode:ASCellNode {
         
         avatarNode.url = comment.profile.profileImageURL
         
+        //let titleStr = "\(comment.profile.username) · 1 hour ago"
         usernameNode.attributedText = NSAttributedString(string: comment.profile.username, attributes: [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14.0, weight: .medium),
+            NSAttributedString.Key.font: UIFont.customFont(.normal, ofSize: 13.0, weight: .regular),//t.systemFont(ofSize: 13.0, weight: .regular),
             NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel
         ])
         
         textNode.attributedText = NSAttributedString(string: comment.text, attributes: [
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15.0, weight: .regular),
+            NSAttributedString.Key.font: UIFont.customFont(.normal, ofSize: 14.0, weight: .regular),//UIFont.systemFont(ofSize: 14.0, weight: .regular),
             NSAttributedString.Key.foregroundColor: UIColor.label
         ])
     }
@@ -98,27 +72,12 @@ class FullCommentCellNode:ASCellNode {
         contentStack.spacing = 12.0
         contentStack.children = [textStack]
         
-        let actionsColumn = ASStackLayoutSpec.vertical()
-        actionsColumn.children = [upVoteButton]//, downVoteButton]
-        actionsColumn.justifyContent = .center
-        actionsColumn.alignContent = .center
-        actionsColumn.spacing = 12.0
-        actionsColumn.alignItems = .center
-        actionsColumn.verticalAlignment = .center
+        let contentInset = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 16, left: 16 + Constants.avatarWidth + 16, bottom: 16, right: 12 + 16), child: contentStack)
+      
         
-        let contentInset = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 12, left: 12 + Constants.avatarWidth + 12, bottom: 12, right: 12 + 12 + 32), child: contentStack)
-        
-        let columWidth:CGFloat = 12 + 32 + 12
-        actionsColumn.style.width = ASDimension(unit: .points, value: 12+32+12)
-        actionsColumn.style.layoutPosition = CGPoint(x: constrainedSize.max.width - columWidth,
-                                                     y: 12)
-        let overlayAbs = ASAbsoluteLayoutSpec(children: [actionsColumn])
-        
-        let overlay = ASOverlayLayoutSpec(child: contentInset, overlay: overlayAbs)
-        
-        avatarNode.style.layoutPosition = CGPoint(x: 12, y: 12)
+        avatarNode.style.layoutPosition = CGPoint(x: 16, y: 12)
         let avatarAbs = ASAbsoluteLayoutSpec(children: [avatarNode])
-        let avatarOverlay = ASOverlayLayoutSpec(child: overlay, overlay: avatarAbs)
+        let avatarOverlay = ASOverlayLayoutSpec(child: contentInset, overlay: avatarAbs)
         
         return avatarOverlay
     }

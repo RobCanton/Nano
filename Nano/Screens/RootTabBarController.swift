@@ -14,6 +14,7 @@ class RootTabBarController:UITabBarController {
     var interactiveModalTransitionDelegate = InteractiveModalTransitionDelegate()
     
     var screen:Screen = .home
+    let monoHome:MonoHomeVC
     let homeVC:HomeViewController
     let marketDataVC:MarketDataViewController
     let newsVC:NewsPagerViewController
@@ -25,6 +26,10 @@ class RootTabBarController:UITabBarController {
     var stockBarBottomAnchor:NSLayoutConstraint!
     
     init() {
+        monoHome = MonoHomeVC()
+        monoHome.tabBarItem.image = UIImage(named: "home")
+        monoHome.tabBarItem.title = "Home"
+        
         homeVC = HomeViewController()
         marketDataVC = MarketDataViewController()
         newsVC = NewsPagerViewController()
@@ -75,7 +80,7 @@ class RootTabBarController:UITabBarController {
         self.view.alpha = 0.0
         
         stockBar = StockBar()
-        stockBar.backgroundColor = UIColor(hex: "171717")
+        stockBar.backgroundColor = UIColor.systemBackground//(hex: "171717")
         stockBar.delegate = self
         view.insertSubview(stockBar, belowSubview: tabBar)
         stockBar.constraintToSuperview(nil, 0, nil, 0, ignoreSafeArea: true)
@@ -96,6 +101,9 @@ class RootTabBarController:UITabBarController {
         super.viewDidLoad()
         tabBar.tintColor = UIColor.label
         tabBar.isTranslucent = false
+        tabBar.barTintColor = .systemBackground
+        tabBar.backgroundColor = .systemBackground
+        tabBar.backgroundImage = UIImage()
         
 //        tabBar.setItems([
 //            UITabBarItem(title: nil, image: UIImage(named: "chart"), tag: 0)

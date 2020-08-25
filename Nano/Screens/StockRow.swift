@@ -41,12 +41,12 @@ class StockRow:UIView {
         titleRow.constraintToSuperview(12, 12, 12, 12, ignoreSafeArea: true)
         
         symbolLabel = UILabel()
-        symbolLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        symbolLabel.font = UIFont.monospacedSystemFont(ofSize: 18, weight: .semibold)//systemFont(ofSize: 20, weight: .semibold)
         titleRow.addSubview(symbolLabel)
         symbolLabel.constraintToSuperview(0, 0, nil, nil, ignoreSafeArea: true)
         
         nameLabel = UILabel()
-        nameLabel.font = UIFont.systemFont(ofSize: 13, weight: .regular)
+        nameLabel.font = UIFont.monospacedSystemFont(ofSize: 13.0, weight: .regular)//systemFont(ofSize: 13, weight: .regular)
         nameLabel.textColor = .secondaryLabel
         titleRow.addSubview(nameLabel)
         nameLabel.constraintToSuperview(nil, 0, 0, nil, ignoreSafeArea: true)

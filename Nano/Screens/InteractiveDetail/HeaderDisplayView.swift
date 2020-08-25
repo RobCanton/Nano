@@ -18,6 +18,7 @@ class HeaderDisplayView:UIView {
     
     private(set) var bidAskView:BidAskView?
     private(set) var liveChartView:LiveChartView!
+    private(set) var candleChartView:CandleChartView!
     private(set) var chartView:ChartView!
     
     private(set) var stockRow:StockRow!
@@ -42,7 +43,7 @@ class HeaderDisplayView:UIView {
         
         backgroundView = UIView()
         self.addSubview(backgroundView)
-        backgroundView.constraintToSuperview()
+        backgroundView.constraintToSuperview(0, 0, 0, 0, ignoreSafeArea: true)
         backgroundView.backgroundColor = UIColor.black
         
         stockRow = StockRow()
@@ -61,6 +62,10 @@ class HeaderDisplayView:UIView {
         liveChartView = LiveChartView()
         chartContentView.addSubview(liveChartView)
         liveChartView.constraintToSuperview()
+        
+//        candleChartView = CandleChartView()
+//        chartContentView.addSubview(candleChartView)
+//        candleChartView.constraintToSuperview()
         
         chartView = ChartView()
         chartContentView.addSubview(chartView)
